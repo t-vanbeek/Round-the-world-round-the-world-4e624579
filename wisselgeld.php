@@ -48,15 +48,15 @@ $centen = array(
     10,
     5,
 );
-
+define(PHP_ROUND_HALF_DOWN, $restbedrag);
 $restbedrag*=100;
-$restbedrag = round($restbedrag, 0);
-$restbedrag = intval($restbedrag);
+$restbedrag = round($restbedrag, 1, PHP_ROUND_HALF_DOWN);
+//$restbedrag = intval($restbedrag);
 foreach($centen as $cent) {
     if ($restbedrag >= $cent) {
         $aantal = floor($restbedrag / $cent);
         $restbedrag = fmod($restbedrag, $cent);
-        echo "$aantal keer $cent cent.";
+        echo "$aantal keer $cent cent." . PHP_EOL;
     }
 }
 ?>
